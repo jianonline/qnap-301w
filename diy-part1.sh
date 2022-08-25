@@ -9,6 +9,14 @@
 # File name: diy-part1.sh
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
+# 修改 argon 为默认主题
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
+# 修改openwrt登陆地址
+sed -i 's/192.168.1.1/192.168.1.1/g' package/base-files/files/bin/config_generat
+
+# 修改主机名字
+sed -i '/uci commit system/i\uci set system.@system[0].hostname='QNAP-301W'' package/lean/default-settings/files/zzz-default-settings
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
